@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 #include<cmath>
+#include<algorithm>
 using namespace std;
 
 class KNN
@@ -10,6 +11,9 @@ private:
 	std::vector<int> y_train; //etykiety danych treningowych
 	int k; //liczba najblizszych sasiadow
 
+	double euclideanDistance(const std::vector<double>& x1, const std::vector<double>& x2);
+	int majorityElement(const std::vector<int>& elements);
+
 public:
 	void fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train, int k) //nadaje wartosci
 	{
@@ -17,12 +21,5 @@ public:
 		this->y_train = y_train;
 		this->k = k;
 	}
-	int predict(std::vector<double> point)
-	{
-		// 1) obliczenie odleglosci euklidesowych miedzy pkt a pkt zbioru treningowego (petla for)
-		// 2) sortowanie odleglosci
-		// 3) wybor k najblizszych sasiadow
-		// 4) glosowanie wiekszosciowe za poprawna etykieta (typ danych unoredered_map)
-	}
-
+	int predict(std::vector<double> point);
 };
