@@ -1,5 +1,13 @@
 #include"../../include/algorithms/knn.h"
 
+
+void KNN::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train, int k) //nadaje wartosci
+{
+	this->X_train = X_train;
+	this->y_train = y_train;
+	this->k = k;
+}
+
 double KNN::euclideanDistance(const std::vector<double>& x1, const std::vector<double>& x2)
 {
 	double d{};
