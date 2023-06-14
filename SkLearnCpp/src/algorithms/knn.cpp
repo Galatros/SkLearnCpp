@@ -1,4 +1,4 @@
-#include"C:\Projekty\C++\.git\SkLearnCpp\include\algorithms\knn.h"
+#include"../../include/algorithms/knn.h"
 
 double KNN::euclideanDistance(const std::vector<double>& x1, const std::vector<double>& x2)
 {
