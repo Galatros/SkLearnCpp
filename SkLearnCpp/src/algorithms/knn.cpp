@@ -32,8 +32,14 @@ int KNN::majorityElement(const std::vector<int>& elements)
 		{
 			suspect = element;
 		}
-		if (element == suspect) count += 1;
-		else count -= 1;
+		if (element == suspect) 
+		{ 
+			count += 1; 
+		}
+		else
+		{
+			count -= 1;
+		}
 	}
 
 	return suspect;
@@ -41,30 +47,28 @@ int KNN::majorityElement(const std::vector<int>& elements)
 
 int KNN::predict(std::vector<double> point)
 {
-	std::vector<double>distances; //vector przechowujacy odleglosci point od punktow treningowych;
-	std::vector<int>nearestNeighbors; //vector przechowujacy sasiadow;
+	std::vector<std::pair<double, int>> distances; // wektor przechowuj¹cy pary (odleg³oœæ, etykieta)
+	std::vector<int> nearestNeighbors; // wektor przechowuj¹cy s¹siadów
 
-	// 1) obliczenie odleglosci euklidesowych miedzy pkt a pkt zbioru treningowego (petla for) i wsadzanie ich do distances
+	// 1) obliczenie odleg³oœci euklidesowych miêdzy pkt a pkt z zbioru treningowego
 	for (int i = 0; i < X_train.size(); i++)
 	{
 		double distance = euclideanDistance(point, X_train[i]);
-		distances.push_back(distance);
+		distances.push_back(std::make_pair(distance, y_train[i]));
 	}
 
-	// 2) sortowanie odleglosci
-	std::sort(distances.begin(), distances.end(), std::greater<>());
+	// 2) sortowanie odleg³oœci
+	std::sort(distances.begin(), distances.end());
 
-	// 3) wybor k najblizszych sasiadow
+	// 3) wybór k najbli¿szych s¹siadów
 	for (int i = 0; i < k; i++)
 	{
-		nearestNeighbors.push_back(distances[i]);
+		nearestNeighbors.push_back(distances[i].second);
 	}
 
-	// 4) glosowanie wiekszosciowe za poprawna etykieta (typ danych unoredered_map)
-	int predicted{};
-	predicted = majorityElement(nearestNeighbors);
+	// 4) g³osowanie wiêkszoœciowe za poprawn¹ etykiet¹
+	int predicted = majorityElement(nearestNeighbors);
 
 	return predicted;
-
 }
 
