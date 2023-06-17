@@ -17,4 +17,5 @@ private:
 public:
 	void fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train, int k); //nadaje wartosci
 	int predict(std::vector<double> point);
+	std::vector<int> predict(std::vector<std::vector<double>> points);
 };

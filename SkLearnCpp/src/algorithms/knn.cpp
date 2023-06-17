@@ -72,3 +72,13 @@ int KNN::predict(std::vector<double> point)
 	return predicted;
 }
 
+std::vector<int> KNN::predict(std::vector<std::vector<double>> points){
+	std::vector<int> predictions;
+	for (auto const& row : points) 
+	{
+		int prediction = predict(row);
+		predictions.push_back(prediction);
+	}
+	return predictions;
+}
+
