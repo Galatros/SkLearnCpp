@@ -1,14 +1,18 @@
 #include"../../include/algorithms/knn.h"
 
+KNN::KNN() : k(5) {}
 
-void KNN::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train, int k) //nadaje wartosci
+KNN::KNN(int k) : k(k) {}
+
+KNN::~KNN() {}
+
+void KNN::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train) //nadaje wartosci
 {
 	this->X_train = X_train;
 	this->y_train = y_train;
-	this->k = k;
 }
 
-double KNN::euclideanDistance(const std::vector<double>& x1, const std::vector<double>& x2)
+double KNN::euclideanDistance(const std::vector<double>& x1, const std::vector<double>& x2) const
 {
 	double d{};
 	for (int i = 0; i < x1.size(); i++)
@@ -19,7 +23,7 @@ double KNN::euclideanDistance(const std::vector<double>& x1, const std::vector<d
 	return d;
 }
 
-int KNN::majorityElement(const std::vector<int>& elements)
+int KNN::majorityElement(const std::vector<int>& elements) const
 {
 	//Moore's Voting Algorithm
 
@@ -45,7 +49,7 @@ int KNN::majorityElement(const std::vector<int>& elements)
 	return suspect;
 }
 
-int KNN::predict(std::vector<double> point)
+int KNN::predict(std::vector<double> point) const
 {
 	std::vector<std::pair<double, int>> distances; // wektor przechowuj¹cy pary (odleg³oœæ, etykieta)
 	std::vector<int> nearestNeighbors; // wektor przechowuj¹cy s¹siadów
@@ -72,7 +76,8 @@ int KNN::predict(std::vector<double> point)
 	return predicted;
 }
 
-std::vector<int> KNN::predict(std::vector<std::vector<double>> points){
+std::vector<int> KNN::predict(std::vector<std::vector<double>> points) const
+{
 	std::vector<int> predictions;
 	for (auto const& row : points) 
 	{
