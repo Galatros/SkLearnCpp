@@ -25,6 +25,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
     }
     
      std::cout<<"NUM OF LABELS: "<<num_of_labels<<std::endl;
+     std::cout<<"NUM OF Features: "<<num_of_features<<std::endl;
     std::vector< std::vector<double>* > v;
     for(int i=0; i<entries.size(); i++){
         v.push_back(&entries[i]);
