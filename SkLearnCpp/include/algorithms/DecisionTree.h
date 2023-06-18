@@ -12,14 +12,12 @@
 
 class DecisionTree: public Classifier{
     std::vector< std::vector<double> >entries;
-    std::vector<std::string> labels_dict;
     int max_depth=4;
     const int minDepth=5;
     Node<double>* root;
 
     int num_of_features;
     int num_of_rows;
-    int num_of_labels;
 
 
     double calcEntropy(std::vector< std::vector<double>* > &v);

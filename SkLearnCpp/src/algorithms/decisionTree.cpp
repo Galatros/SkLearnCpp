@@ -2,26 +2,24 @@
 
 
 void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train){
-
-
-    std::vector< std::vector<double> >entries;
     //data convert to entries
-    num_of_rows = X_train.size();
-    num_of_features = X_train[0].size();
-    for(int row=0; row<num_of_rows; row++){
+    
+    for(int row=0; row<X_train.size(); row++){
         std::vector<double> entry;
-        for(int column=0; column<num_of_features; column++){
+        for(int column=0; column<X_train[0].size(); column++){
             entry.push_back(X_train[row][column]);
         }
         entry.push_back(y_train[row]);
         entries.push_back(entry);
     }
+    num_of_rows = entries.size();
+    num_of_features = entries[0].size()-1;
 
     std::vector< std::vector<double>* > v;
     for(int i=0; i<entries.size(); i++){
         v.push_back(&entries[i]);
     }
-    //display_vector_contents(v);
+    display_vector_contents(v);
     fitNode(root, v, 0);
 
 
