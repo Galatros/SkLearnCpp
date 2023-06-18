@@ -131,11 +131,14 @@
     <ClCompile Include="src\data\DataLoader.cpp" />
     <ClCompile Include="src\data\Utilities.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\preprocessing\MinMaxScaler.cpp" />
+    <ClCompile Include="src\preprocessing\StandardScaler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\algorithms\knn.h" />
     <ClInclude Include="include\data\DataLoader.h" />
     <ClInclude Include="include\data\Utilities.h" />
+    <ClInclude Include="include\preprocessing\preprocessor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
