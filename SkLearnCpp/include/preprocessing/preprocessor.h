@@ -27,6 +27,7 @@ private:
 class MinMaxScaler : public Preprocessor {
 public:
 	MinMaxScaler();
+	MinMaxScaler(double rangeMin, double rangeMax);
 	~MinMaxScaler();
 	void fit(const std::vector<std::vector<double>>& data) override;
 	std::vector<std::vector<double>> fit_transform(const std::vector<std::vector<double>>& data) override;

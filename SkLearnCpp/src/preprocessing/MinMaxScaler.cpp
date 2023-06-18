@@ -2,6 +2,8 @@
 
 MinMaxScaler::MinMaxScaler() : featureRange(0.0, 1.0) {}
 
+MinMaxScaler::MinMaxScaler(double rangeMin, double rangeMax) : featureRange(rangeMin, rangeMax) {}
+
 MinMaxScaler::~MinMaxScaler() {}
 
 void MinMaxScaler::fit(const std::vector<std::vector<double>>& data) 
