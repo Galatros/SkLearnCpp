@@ -12,7 +12,7 @@
 
 class DecisionTree: public Classifier{
     std::vector< std::vector<double> >entries;
-    std::vector<int labels_dict;
+    std::vector<int> labels_dict;
     int max_depth=4;
     const int minDepth=5;
     Node<double>* root;
