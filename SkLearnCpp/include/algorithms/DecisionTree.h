@@ -18,6 +18,7 @@ class DecisionTree: public Classifier{
 
     int num_of_features;
     int num_of_rows;
+    int num_of_labels;
 
 
     double calcEntropy(std::vector< std::vector<double>* > &v);

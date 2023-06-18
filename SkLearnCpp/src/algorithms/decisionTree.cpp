@@ -14,6 +14,15 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
     }
     num_of_rows = entries.size();
     num_of_features = entries[0].size()-1;
+    num_of_labels=0;
+    for(int i=0; i<y_train.size(); i++){
+        std::string key= data->labels[i];
+        int index = find(labels_dict, key);
+        if(index < 0){
+            num_of_labels++;
+        }
+    }
+    
 
     std::vector< std::vector<double>* > v;
     for(int i=0; i<entries.size(); i++){
@@ -21,8 +30,6 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
     }
     display_vector_contents(v);
     fitNode(root, v, 0);
-
-
 }
 void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>* > &v, int depth_level){
     double own_entropy = calcEntropy(v);
