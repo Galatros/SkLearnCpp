@@ -2,10 +2,7 @@
 
 
 void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train){
-    if(dataCorrupted){
-        std::cout<<"No data or data corrupted. Load data before fitting."<<std::endl;
-        return;
-    }
+
 
     std::vector< std::vector<double> >entries;
     //data convert to entries
@@ -114,28 +111,6 @@ double DecisionTree::calcEntropy(std::vector< std::vector<double>* > &v){
         entropy += -p*log_base(num_of_labels,p);
     }
     return entropy;
-}
-
-void DecisionTree::fillLabelsDict(){
-    for(int i=0; i<data->labels.size(); i++){
-        std::string key= data->labels[i];
-        int index = find(labels_dict, key);
-        if(index < 0){
-            labels_dict.push_back(key);
-        }
-    }
-    num_of_labels = labels_dict.size();
-}
-
-double DecisionTree::dictLabelLookup(std::string s){
-    for(int i=0; i<labels_dict.size(); i++){
-        if(labels_dict[i]==s) return i;
-    }
-    std::cout<<"Critical error: dictionary label unresolved."<<std::endl;
-    exit(1);
-}
-std::string DecisionTree::dictLabelLookup(int i){
-    return labels_dict[i];
 }
 
 int DecisionTree::predict(std::vector<double> point) {

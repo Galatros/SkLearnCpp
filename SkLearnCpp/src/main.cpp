@@ -3,13 +3,14 @@
 #include "../include/preprocessing/preprocessor.h"
 #include "../include/preprocessing/LabelEncoder.h"
 #include "../include/data/Utilities.h"
-#include "../include/algorithms/knn.h"
+//#include "../include/algorithms/knn.h"
+#include "../include/algorithms/DecisionTree.h"
 #include "../include/visualization/PlottingUtils.h"
 
 int main() {
     //Wczytanie danych
     DataLoader<double> orginalData;
-    orginalData.loadFromFile("C:\\Users\\user\\Desktop\\iris.csv");
+    orginalData.loadFromFile("C:\\Users\\ola86\\Desktop\\iris.csv");
 
 
     //Ograniczenie si� do 2 kolumn w celu u�atwienia rysowania
@@ -33,14 +34,16 @@ int main() {
     auto X_test_std = scaler.transform(X_test);
 
     //Wyb�r klasyfikatora
-    KNN knn(7);
-    knn.fit(X_train_std, y_train);
+    //KNN knn(7);
+    //knn.fit(X_train_std, y_train);
+    DecisionTree clf;
+    clf.fit(X_train_std, y_train);
 
     //Wyniki
     //TODO trafno�c predykcji dla zbioru treningowe i testowego!!
 
     //Stworzenie skryptu dla gnuplota do wyrysowania wynik�w
-    //plotDecisionRegions(X_train_std, y_train, X_test_std, y_test, knn);
+    plotDecisionRegions(X_train_std, y_train, X_test_std, y_test, clf);
 
     return 0;
 }

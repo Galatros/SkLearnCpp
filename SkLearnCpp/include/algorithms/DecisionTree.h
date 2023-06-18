@@ -1,7 +1,7 @@
 #ifndef DECISIONTREE_H
 #define DECISIONTREE_H
 
-#pragma once
+//#pragma once
 #include "Classifier.h"
 #include "../data/DataLoader.h"
 #include "../data/Node.h"
@@ -11,8 +11,6 @@
 #include <math.h>
 
 class DecisionTree: public Classifier{
-    bool dataCorrupted=true;
-    DataLoader<double>* data;
     std::vector< std::vector<double> >entries;
     std::vector<std::string> labels_dict;
     int max_depth=4;
@@ -23,9 +21,6 @@ class DecisionTree: public Classifier{
     int num_of_rows;
     int num_of_labels;
 
-    void fillLabelsDict();
-    double dictLabelLookup(std::string s);
-    std::string dictLabelLookup(int i);
 
     double calcEntropy(std::vector< std::vector<double>* > &v);
     void fitNode(Node<double>* node, std::vector< std::vector<double>* > &v, int depth_level);
@@ -42,7 +37,7 @@ class DecisionTree: public Classifier{
     //void setDepth(int d);
     void fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train);
     int predict(std::vector<double> point);
-    virtual std::vector<int> predict(std::vector<std::vector<double>> v);
+    std::vector<int> predict(std::vector<std::vector<double>> v);
     
     void printNode(Node<double>* node);
     void displayNodes();
