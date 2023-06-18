@@ -4,8 +4,7 @@
 class Preprocessor
 {
 public:
-	//virtual Preprocessor();
-	//virtual ~Preprocessor();
+	virtual ~Preprocessor() {};
 	virtual void fit(const std::vector<std::vector<double>>& data) = 0;
 	virtual std::vector<std::vector<double>> transform(const std::vector<std::vector<double>>& data) const = 0;
 	virtual std::vector<std::vector<double>> fit_transform(const std::vector<std::vector<double>>& data) = 0;
@@ -14,7 +13,7 @@ public:
 
 class StandardScaler : public Preprocessor {
 public:
-	//StandardScaler();
+	~StandardScaler();
 	void fit(const std::vector<std::vector<double>>& data) override;
 	std::vector<std::vector<double>> fit_transform(const std::vector<std::vector<double>>& data) override;
 	std::vector<std::vector<double>> transform(const std::vector<std::vector<double>>& data) const override;
@@ -28,7 +27,7 @@ private:
 class MinMaxScaler : public Preprocessor {
 public:
 	MinMaxScaler();
-	//~MinMaxScaler() {}
+	~MinMaxScaler();
 	void fit(const std::vector<std::vector<double>>& data) override;
 	std::vector<std::vector<double>> fit_transform(const std::vector<std::vector<double>>& data) override;
 	std::vector<std::vector<double>> transform(const std::vector<std::vector<double>>& data) const override;
