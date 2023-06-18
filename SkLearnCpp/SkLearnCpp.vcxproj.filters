@@ -21,6 +21,12 @@
     <ClCompile Include="src\algorithms\knn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\preprocessing\MinMaxScaler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\preprocessing\StandardScaler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\data\DataLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\data\Utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\preprocessing\preprocessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
