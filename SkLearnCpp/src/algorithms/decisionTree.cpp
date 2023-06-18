@@ -53,6 +53,7 @@ void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>*
             if(information_gain > best_information_gain){
                 best_information_gain = information_gain;
                 best_condition = test_condition;
+                std::cout<<"BEST CONDITION: "<<best_condition<<std::endl;
             }
         }
     }
