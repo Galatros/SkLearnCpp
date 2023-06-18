@@ -16,7 +16,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
     num_of_features = entries[0].size()-1;
     num_of_labels=0;
     for(int i=0; i<y_train.size(); i++){
-        std::string key= y_train[i];
+        int key= y_train[i];
         int index = find(labels_dict, key);
         if(index < 0){
             num_of_labels++;
