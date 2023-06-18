@@ -34,7 +34,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
 void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>* > &v, int depth_level){
     double own_entropy = calcEntropy(v);
     node->entropy = own_entropy;
-   
+    std::cout<<"Entropy: "<<own_entropp<<std::endl;
     if(own_entropy == 0){
         node->label = v[0]->at(num_of_features);
         //std::cout<<"LEAF NODE: "<<node->label<<"    DEPTH: "<<depth_level<<std::endl;
