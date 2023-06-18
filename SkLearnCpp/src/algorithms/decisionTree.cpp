@@ -29,7 +29,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
         v.push_back(&entries[i]);
     }
     display_vector_contents(v);
-    exit 0;
+    exit (0);
     fitNode(root, v, 0);
 }
 void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>* > &v, int depth_level){
