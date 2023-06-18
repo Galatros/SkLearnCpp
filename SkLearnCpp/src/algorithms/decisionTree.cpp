@@ -4,7 +4,6 @@
 
 void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train){
     //data convert to entries
-    std::cout<<"NUM OF LABELS: "<<num_of_labels<<std::endl;
     for(int row=0; row<X_train.size(); row++){
         std::vector<double> entry;
         for(int column=0; column<X_train[0].size(); column++){
@@ -25,7 +24,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
         }
     }
     
-
+     std::cout<<"NUM OF LABELS: "<<num_of_labels<<std::endl;
     std::vector< std::vector<double>* > v;
     for(int i=0; i<entries.size(); i++){
         v.push_back(&entries[i]);
