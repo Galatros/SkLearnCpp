@@ -1,6 +1,7 @@
 #include "../../include/algorithms/DecisionTree.h"
 
 
+
 void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const std::vector<int>& y_train){
     //data convert to entries
     
@@ -19,6 +20,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
         int key= y_train[i];
         int index = find(labels_dict, key);
         if(index < 0){
+            labels_dict.push_back(key);
             num_of_labels++;
         }
     }
@@ -48,7 +50,7 @@ void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>*
         for(int i=0; i<v.size(); i++){
             Condition<double> test_condition(feature, v[i]->at(feature));
             double information_gain = calcInformationGain(test_condition, v, own_entropy);
-            //std::cout<<"info gain: "<<information_gain<<std::endl; 
+            std::cout<<"info gain: "<<information_gain<<std::endl; 
             if(information_gain > best_information_gain){
                 best_information_gain = information_gain;
                 best_condition = test_condition;
