@@ -21,7 +21,7 @@ class DecisionTree: public Classifier{
     int num_of_rows;
     int num_of_labels;
 
-
+    int mostOccuredLabel(std::vector< std::vector<double>* >& v);
     double calcEntropy(std::vector< std::vector<double>* > &v);
     void fitNode(Node<double>* node, std::vector< std::vector<double>* > &v, int depth_level);
     double calcInformationGain(Condition<double> c, std::vector< std::vector<double>* > &v, double parent_information_content);

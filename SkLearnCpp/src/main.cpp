@@ -10,12 +10,12 @@
 int main() {
     //Wczytanie danych
     DataLoader<double> orginalData;
-    orginalData.loadFromFile("C:\\Users\\ola86\\Desktop\\iris.csv");
+    orginalData.loadFromFile("C:\\Users\\tobia\\Downloads\\iris.csv");
 
 
     //Ograniczenie si� do 2 kolumn w celu u�atwienia rysowania
-    std::vector<std::vector<double>> X = extractTwoColumns(orginalData.data, 2, 3);
-
+    //std::vector<std::vector<double>> X = extractTwoColumns(orginalData.data, 2, 3);
+    std::vector<std::vector<double>> X = orginalData.data;
     //Konwersja Labels na Inty
     LabelEncoder labelEncoder;
     std::vector<int> y = labelEncoder.fit_transform(orginalData.labels);
@@ -38,12 +38,13 @@ int main() {
     //knn.fit(X_train_std, y_train);
     DecisionTree clf;
     clf.fit(X_train_std, y_train);
+    clf.predict(X_test_std);
 
     //Wyniki
     //TODO trafno�c predykcji dla zbioru treningowe i testowego!!
 
     //Stworzenie skryptu dla gnuplota do wyrysowania wynik�w
-    plotDecisionRegions(X_train_std, y_train, X_test_std, y_test, clf);
+    //plotDecisionRegions(X_train_std, y_train, X_test_std, y_test, clf);
 
     return 0;
 }

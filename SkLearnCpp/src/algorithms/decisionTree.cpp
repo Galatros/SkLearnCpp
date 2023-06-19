@@ -36,7 +36,7 @@ void DecisionTree::fit(const std::vector<std::vector<double>>& X_train, const st
 void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>* > &v, int depth_level){
     double own_entropy = calcEntropy(v);
     node->entropy = own_entropy;
-    std::cout<<"Entropy: "<<own_entropy<<std::endl;
+    //std::cout<<"Entropy: "<<own_entropy<<std::endl;
     if(own_entropy == 0){
         node->label = v[0]->at(num_of_features);
         //std::cout<<"LEAF NODE: "<<node->label<<"    DEPTH: "<<depth_level<<std::endl;
@@ -50,13 +50,19 @@ void DecisionTree::fitNode(Node<double>* node, std::vector< std::vector<double>*
         for(int i=0; i<v.size(); i++){
             Condition<double> test_condition(feature, v[i]->at(feature));
             double information_gain = calcInformationGain(test_condition, v, own_entropy);
-            std::cout<<"info gain: "<<information_gain<<std::endl; 
+            //std::cout<<"info gain: "<<information_gain<<std::endl; 
             if(information_gain > best_information_gain){
                 best_information_gain = information_gain;
                 best_condition = test_condition;
-                std::cout<<"BEST CONDITION: "<<best_condition<<std::endl;
+                //std::cout<<"BEST CONDITION: "<<best_condition.value<<std::endl;
             }
         }
+    }
+
+    if (best_information_gain == 0) {
+        node->label = mostOccuredLabel(v);
+        //std::cout << "LEAF NODE no info gain: " << node->label << "    DEPTH: " << depth_level << std::endl;
+        return;
     }
     //std::cout<<"BEST information_gain: "<<best_information_gain<<std::endl;
     node->condition = best_condition;
@@ -120,9 +126,27 @@ double DecisionTree::calcEntropy(std::vector< std::vector<double>* > &v){
     }
     return entropy;
 }
+int DecisionTree::mostOccuredLabel(std::vector< std::vector<double>* >& v) {
+    int most_occured = 0;
+    int occurences = 0;
+    for (int i = 0; i < num_of_labels; i++) {
+        int counter = 0;
+        for (int entry = 0; entry < v.size(); entry++) {
+            if (v[entry]->at(num_of_features) == i) counter++;
+        }
+        if (counter > occurences) {
+            occurences = counter;
+            most_occured = i;
+        }
+    }
+
+    return most_occured;
+}
 
 int DecisionTree::predict(std::vector<double> point) {
     int label = predictNode(point, root, 0);
+    display_vector_contents(point);
+    std::cout << "label: " << label << std::endl;
     return label;
 }
 std::vector<int> DecisionTree::predict(std::vector<std::vector<double>> v){
