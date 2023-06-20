@@ -145,8 +145,8 @@ int DecisionTree::mostOccuredLabel(std::vector< std::vector<double>* >& v) {
 
 int DecisionTree::predict(std::vector<double> point) {
     int label = predictNode(point, root, 0);
-    display_vector_contents(point);
-    std::cout << "label: " << label << std::endl;
+    //display_vector_contents(point);
+    //std::cout << "label: " << label << std::endl;
     return label;
 }
 std::vector<int> DecisionTree::predict(std::vector<std::vector<double>> v){
