@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\algorithms\decisionTree.cpp" />
     <ClCompile Include="src\algorithms\knn.cpp" />
     <ClCompile Include="src\data\DataLoader.cpp" />
     <ClCompile Include="src\preprocessing\LabelEncoder.cpp" />
@@ -137,6 +138,8 @@
     <ClCompile Include="src\visualization\PlottingUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\algorithms\Classifier.h" />
+    <ClInclude Include="include\algorithms\DecisionTree.h" />
     <ClInclude Include="include\algorithms\knn.h" />
     <ClInclude Include="include\data\DataLoader.h" />
     <ClInclude Include="include\data\Utilities.h" />
